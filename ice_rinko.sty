@@ -1,0 +1,50 @@
+\usepackage{cuted} % for fbox 
+
+\def\jtitle#1{\gdef\@jtitle{#1}}
+\def\etitle#1{\gdef\@etitle{#1}}
+\def\labname#1{\gdef\@labname{#1}}
+\def\affiliation#1{\gdef\@affiliation{#1}}
+
+\setlength{\textheight}{\paperheight}
+\setlength{\topmargin}{-7.4truemm}
+\addtolength{\topmargin}{-\headheight}
+\addtolength{\topmargin}{-\headsep}
+\addtolength{\textheight}{-58truemm}
+
+\setlength{\textwidth}{\paperwidth}
+\setlength{\oddsidemargin}{-7.4truemm}
+\setlength{\evensidemargin}{-7.4truemm} 
+\addtolength{\textwidth}{-32truemm}
+
+\renewcommand{\maketitle}{
+	% \thispagestyle{empty}
+	\begin{strip}
+	\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{
+    {電子情報学輪講資料\hspace{\fill}\@date}
+    \begin{center}
+    \vfill
+    {\large\bf \@jtitle} \\
+	{\large\bf \@etitle}
+    \vfill
+	\end{center}
+	{\@labname\hspace{\fill}\@affiliation \ \@author}
+	}}
+	\vspace{0.5cm}\par
+	\end{strip}
+}
+
+\makeatletter
+\renewenvironment{abstract}{
+  \begin{flushleft}
+    {\fontsize{14pt}{0pt}\bfseries Abstract}% For setting the font size of "Abstract"
+  \end{flushleft}}
+  {}
+\makeatother
+
+\makeatletter
+\renewcommand{\section}{
+  \@startsection{section}{1}{\z@}
+  {1.5\Cvs \@plus.5\Cdp \@minus.2\Cdp}
+  {.5\Cvs \@plus.3\Cdp}
+  {\fontsize{14pt}{0pt}\selectfont\textbf}}% For setting the font size of a section title
+  \makeatother
